@@ -1,6 +1,6 @@
 package ru.practicum.shareit.user.data;
 
-import ru.practicum.shareit.user.model.User;
+import ru.practicum.shareit.user.User;
 
 import java.util.Collection;
 

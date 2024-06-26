@@ -1,7 +1,7 @@
 package ru.practicum.shareit.user.data;
 
 import lombok.Getter;
-import ru.practicum.shareit.user.model.User;
+import ru.practicum.shareit.user.User;
 
 import java.util.HashMap;
 import java.util.Map;

@@ -1,7 +1,7 @@
 package ru.practicum.shareit.request.data;
 
 import lombok.Getter;
-import ru.practicum.shareit.request.model.ItemRequest;
+import ru.practicum.shareit.request.ItemRequest;
 
 import java.util.HashMap;
 import java.util.Map;

@@ -1,7 +1,7 @@
 package ru.practicum.shareit.request.data;
 
 import org.springframework.stereotype.Component;
-import ru.practicum.shareit.request.model.ItemRequest;
+import ru.practicum.shareit.request.ItemRequest;
 
 @Component
 public class ItemRequestStorage {
