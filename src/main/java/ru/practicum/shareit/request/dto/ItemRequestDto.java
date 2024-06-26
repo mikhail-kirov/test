@@ -12,5 +12,5 @@ import java.util.List;
 public class ItemRequestDto {
     private User sourceRequestUser;
     private String request;
-    private List<Item> ResultItems;
+    private List<Item> resultItems;
 }
