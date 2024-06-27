@@ -1,6 +1,7 @@
 package ru.practicum.shareit.item.data;
 
 import lombok.Getter;
+import org.springframework.stereotype.Component;
 import ru.practicum.shareit.item.model.Item;
 
 import java.util.HashMap;
@@ -9,7 +10,8 @@ import java.util.Map;
 import java.util.stream.Collectors;
 
 @Getter
-public class ItemData {
+@Component
+public class ItemRepository {
 
     private final Map<Long, Item> items = new HashMap<>();
 

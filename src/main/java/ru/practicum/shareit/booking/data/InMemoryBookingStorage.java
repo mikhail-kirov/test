@@ -1,13 +1,15 @@
 package ru.practicum.shareit.booking.data;
 
 import lombok.Getter;
-import ru.practicum.shareit.booking.Booking;
+import org.springframework.stereotype.Component;
+import ru.practicum.shareit.booking.model.Booking;
 
 import java.util.HashSet;
 import java.util.Set;
 
 @Getter
-public class BookingData {
+@Component
+public class InMemoryBookingStorage {
 
     private final Set<Booking> bookings = new HashSet<>();
 

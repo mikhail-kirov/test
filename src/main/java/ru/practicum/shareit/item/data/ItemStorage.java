@@ -1,37 +1,19 @@
 package ru.practicum.shareit.item.data;
 
-import org.springframework.stereotype.Component;
-import ru.practicum.shareit.item.MappingItem;
 import ru.practicum.shareit.item.dto.ItemDto;
 import ru.practicum.shareit.item.model.Item;
 
 import java.util.Collection;
 
-@Component
-public class ItemStorage {
+public interface ItemStorage {
 
-    private final ItemData itemData = new ItemData();
-    private long id = 0;
+    Item addItem(ItemDto itemDto, Long userId);
 
-    public Item addItem(ItemDto itemDto, Long userId) {
-        itemData.setItem(MappingItem.mapToItem(itemDto, ++id, userId));
-        return getItemById(id);
-    }
+    Item getItemById(Long id);
 
-    public Item getItemById(Long id) {
-        return itemData.getItemById(id);
-    }
+    Item updateItem(Item item);
 
-    public Item updateItem(Item item) {
-        itemData.setItem(item);
-        return getItemById(item.getId());
-    }
+    Collection<Item> getAllItem();
 
-    public Collection<Item> getAllItem() {
-        return itemData.getItems().values();
-    }
-
-    public Collection<Item> getItemsByUserId(Long id) {
-        return itemData.getItemsByUserId(id);
-    }
+    Collection<Item> getItemsByUserId(Long id);
 }

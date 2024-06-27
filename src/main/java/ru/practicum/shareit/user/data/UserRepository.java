@@ -1,13 +1,15 @@
 package ru.practicum.shareit.user.data;
 
 import lombok.Getter;
-import ru.practicum.shareit.user.User;
+import org.springframework.stereotype.Component;
+import ru.practicum.shareit.user.model.User;
 
 import java.util.HashMap;
 import java.util.Map;
 
 @Getter
-public class UserData {
+@Component
+public class UserRepository {
 
     private final Map<Long, User> users = new HashMap<>();
 

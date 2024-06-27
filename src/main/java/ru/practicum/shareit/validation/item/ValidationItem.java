@@ -3,7 +3,7 @@ package ru.practicum.shareit.validation.item;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Component;
-import ru.practicum.shareit.item.data.ItemStorage;
+import ru.practicum.shareit.item.data.InMemoryItemStorage;
 import ru.practicum.shareit.item.model.Item;
 import ru.practicum.shareit.validation.exeption.NotFoundException;
 
@@ -12,7 +12,7 @@ import ru.practicum.shareit.validation.exeption.NotFoundException;
 @Slf4j
 public class ValidationItem {
 
-    private final ItemStorage itemStorage;
+    private final InMemoryItemStorage itemStorage;
 
     public void validationItemById(Long id) {
         if (itemStorage.getItemById(id) == null) {

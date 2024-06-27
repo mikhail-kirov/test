@@ -1,41 +1,43 @@
 package ru.practicum.shareit.user.data;
 
+import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Component;
-import ru.practicum.shareit.user.User;
+import ru.practicum.shareit.user.model.User;
 
 import java.util.Collection;
 
 @Component
+@RequiredArgsConstructor
 public class InMemoryUserStorage implements UserStorage {
 
-    private final UserData userData = new UserData();
+    private final UserRepository userRepository;
     private long id = 0;
 
     @Override
     public User addUser(User user) {
         user.setId(++id);
-        userData.setUser(user);
+        userRepository.setUser(user);
         return getUserById(id);
     }
 
     @Override
     public User getUserById(Long id) {
-        return userData.getUserById(id);
+        return userRepository.getUserById(id);
     }
 
     @Override
     public User updateUser(User user) {
-        userData.setUser(user);
+        userRepository.setUser(user);
         return getUserById(user.getId());
     }
 
     @Override
     public void removeUser(Long id) {
-        userData.removeUser(id);
+        userRepository.removeUser(id);
     }
 
     @Override
     public Collection<User> getUsers() {
-        return userData.getUsers().values();
+        return userRepository.getUsers().values();
     }
 }

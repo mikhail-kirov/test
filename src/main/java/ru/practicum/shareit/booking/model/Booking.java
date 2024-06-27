@@ -1,4 +1,4 @@
-package ru.practicum.shareit.booking;
+package ru.practicum.shareit.booking.model;
 
 import lombok.Builder;
 import lombok.Data;
@@ -12,5 +12,3 @@ public class Booking {
     private Long tenantId;
     private LocalDate bookingDate;
 }
-
-
