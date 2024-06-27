@@ -12,33 +12,33 @@ import java.util.Collection;
 @RequiredArgsConstructor
 public class InMemoryItemStorage implements ItemStorage {
 
-    private final ItemRepository itemData;
+    private final ItemRepository itemRepository;
     private long id = 0;
 
     @Override
     public Item addItem(ItemDto itemDto, Long userId) {
-        itemData.setItem(MappingItem.mapToItem(itemDto, ++id, userId));
+        itemRepository.setItem(MappingItem.mapToItem(itemDto, ++id, userId));
         return getItemById(id);
     }
 
     @Override
     public Item getItemById(Long id) {
-        return itemData.getItemById(id);
+        return itemRepository.getItemById(id);
     }
 
     @Override
     public Item updateItem(Item item) {
-        itemData.setItem(item);
+        itemRepository.setItem(item);
         return getItemById(item.getId());
     }
 
     @Override
     public Collection<Item> getAllItem() {
-        return itemData.getItems().values();
+        return itemRepository.getItems().values();
     }
 
     @Override
     public Collection<Item> getItemsByUserId(Long id) {
-        return itemData.getItemsByUserId(id);
+        return itemRepository.getItemsByUserId(id);
     }
 }
