@@ -1,4 +1,4 @@
-package ru.practicum.shareit.validation;
+package ru.practicum.shareit.validation.exeption;
 
 import org.springframework.http.HttpStatus;
 import org.springframework.validation.FieldError;
@@ -6,8 +6,6 @@ import org.springframework.web.bind.MethodArgumentNotValidException;
 import org.springframework.web.bind.annotation.ExceptionHandler;
 import org.springframework.web.bind.annotation.ResponseStatus;
 import org.springframework.web.bind.annotation.RestControllerAdvice;
-import ru.practicum.shareit.validation.exeption.IncorrectParameterException;
-import ru.practicum.shareit.validation.exeption.NotFoundException;
 
 import java.util.HashMap;
 import java.util.Map;
@@ -24,6 +22,12 @@ public class ErrorHandler {
     @ExceptionHandler
     @ResponseStatus(HttpStatus.CONFLICT)
     public ErrorResponse handleUserObject(final IncorrectParameterException e) {
+        return new ErrorResponse(e.getMessage());
+    }
+
+    @ExceptionHandler
+    @ResponseStatus(HttpStatus.BAD_REQUEST)
+    public ErrorResponse handleUserObject(final BadRequestException e) {
         return new ErrorResponse(e.getMessage());
     }
 

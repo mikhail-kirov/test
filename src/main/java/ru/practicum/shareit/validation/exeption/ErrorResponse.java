@@ -1,4 +1,4 @@
-package ru.practicum.shareit.validation;
+package ru.practicum.shareit.validation.exeption;
 
 import lombok.AllArgsConstructor;
 import lombok.Getter;

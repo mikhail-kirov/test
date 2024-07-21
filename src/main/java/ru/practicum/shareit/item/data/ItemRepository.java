@@ -1,31 +1,21 @@
 package ru.practicum.shareit.item.data;
 
-import lombok.Getter;
+import org.springframework.data.jpa.repository.JpaRepository;
+import org.springframework.data.jpa.repository.Query;
 import org.springframework.stereotype.Component;
 import ru.practicum.shareit.item.model.Item;
 
-import java.util.HashMap;
 import java.util.List;
-import java.util.Map;
-import java.util.stream.Collectors;
 
-@Getter
 @Component
-public class ItemRepository {
+public interface ItemRepository extends JpaRepository<Item, Long> {
 
-    private final Map<Long, Item> items = new HashMap<>();
+    List<Item> findByOwnerId(Long id);
 
-    public void setItem(Item item) {
-        items.put(item.getId(), item);
-    }
-
-    public Item getItemById(Long id) {
-        return items.get(id);
-    }
-
-    public List<Item> getItemsByUserId(Long id) {
-        return items.values().stream()
-                .filter(item -> item.getOwnerId().equals(id))
-                .collect(Collectors.toList());
-    }
+    @Query("select it " +
+            "from Item as it " +
+            "where it.name ilike %?1% " +
+            "or it.description ilike %?1%" +
+            "and it.available = true")
+    List<Item> getItemBySearch(String search);
 }

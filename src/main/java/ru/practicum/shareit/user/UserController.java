@@ -20,13 +20,14 @@ public class UserController {
 
     @PostMapping
     public User createUser(@Valid @RequestBody User user) {
+        log.info("Запрос на добавление пользователя {}", user.getEmail());
         return userService.addUser(user);
     }
 
     @PatchMapping("/{id}")
     public User updateUser(@RequestBody User user,
-                           @PathVariable Long id) {
-        log.info("Запрос на добавление пользователя {}", user.getEmail());
+                           @PathVariable long id) {
+        log.info("Запрос на изменение пользователя с ID: {}", id);
         return userService.updateUser(id, user);
     }
 

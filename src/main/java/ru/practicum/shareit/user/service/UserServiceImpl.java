@@ -1,9 +1,10 @@
 package ru.practicum.shareit.user.service;
 
+import jakarta.transaction.Transactional;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Service;
-import ru.practicum.shareit.user.data.UserStorage;
+import ru.practicum.shareit.user.data.UserRepository;
 import ru.practicum.shareit.user.model.User;
 import ru.practicum.shareit.validation.user.ValidationUser;
 
@@ -12,55 +13,51 @@ import java.util.Collection;
 @Service
 @RequiredArgsConstructor
 @Slf4j
+@Transactional
 public class UserServiceImpl implements UserService {
 
-    private final UserStorage userStorage;
     private final ValidationUser validationUser;
+    private final UserRepository userRepository;
 
     @Override
     public User addUser(User user) {
-        validationUser.validationDuplicateUser(user);
-        User user1 = userStorage.addUser(user);
+        User user1 = userRepository.save(user);
         log.info("Пользователь {} добавлен", user.getEmail());
         return user1;
     }
 
     @Override
     public User updateUser(Long userId, User user) {
-        validationUser.validationUserById(userId);
-        user.setId(userId);
-        validationUser.validationUpdateUser(user);
-        User us = userStorage.getUserById(userId);
+        User user1 = validationUser.validationUserById(userId);
         if (user.getEmail() != null) {
-            us.setEmail(user.getEmail());
+            user1.setEmail(user.getEmail());
         }
         if (user.getName() != null) {
-            us.setName(user.getName());
+            user1.setName(user.getName());
         }
-        log.info("Данные пользователя {} обновлены", us.getEmail());
-        return userStorage.updateUser(us);
+        userRepository.save(user1);
+        log.info("Данные пользователя {} обновлены", user1.getEmail());
+        return user1;
     }
 
     @Override
     public User removeUser(Long id) {
-        validationUser.validationUserById(id);
-        User user = getUserById(id);
-        userStorage.removeUser(id);
+        User user = validationUser.validationUserById(id);
+        userRepository.delete(user);
         log.info("Пользователь {} удален", user.getEmail());
         return user;
     }
 
     @Override
     public User getUserById(Long id) {
-        validationUser.validationUserById(id);
-        User user = userStorage.getUserById(id);
+        User user = validationUser.validationUserById(id);
         log.info("Найден пользователь с ID {} найден: {}", id, user.getEmail());
         return user;
     }
 
     @Override
     public Collection<User> getUsers() {
-        Collection<User> users = userStorage.getUsers();
+        Collection<User> users = userRepository.findAll();
         log.info("Список пользователей сформирован и отправлен");
         return users;
     }
