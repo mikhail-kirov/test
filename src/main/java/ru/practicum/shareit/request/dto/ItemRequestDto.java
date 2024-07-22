@@ -11,6 +11,5 @@ import java.util.List;
 @Builder
 public class ItemRequestDto {
     private User sourceRequestUser;
-    private String request;
     private List<Item> resultItems;
 }
