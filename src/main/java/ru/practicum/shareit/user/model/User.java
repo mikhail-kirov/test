@@ -5,7 +5,8 @@ import jakarta.validation.constraints.Email;
 import jakarta.validation.constraints.NotNull;
 import lombok.*;
 
-@Getter @Setter
+@Getter
+@Setter
 @Entity
 @Table(name = "users", schema = "public")
 @NoArgsConstructor

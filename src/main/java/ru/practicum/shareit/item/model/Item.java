@@ -8,7 +8,8 @@ import java.util.ArrayList;
 import java.util.List;
 
 
-@Getter @Setter
+@Getter
+@Setter
 @Entity
 @Table(name = "items", schema = "public")
 @NoArgsConstructor
