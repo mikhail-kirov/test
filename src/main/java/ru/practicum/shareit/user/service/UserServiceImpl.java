@@ -3,6 +3,7 @@ package ru.practicum.shareit.user.service;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 import ru.practicum.shareit.user.data.UserRepository;
 import ru.practicum.shareit.user.model.User;
 import ru.practicum.shareit.validation.user.ValidationUser;
@@ -12,6 +13,7 @@ import java.util.Collection;
 @Service
 @RequiredArgsConstructor
 @Slf4j
+@Transactional
 public class UserServiceImpl implements UserService {
 
     private final ValidationUser validationUser;
