@@ -1,5 +1,5 @@
 spring:
-  application.name: shareit
+  application.name: ShareIt
   main.banner-mode: OFF
   jpa:
     show-sql: true

@@ -10,7 +10,7 @@
 		<relativePath/> <!-- lookup parent from repository -->
 	</parent>
 
-	<groupId>org.example</groupId>
+	<groupId>ru.practicum.shareit</groupId>
 	<artifactId>shareit</artifactId>
 	<version>0.0.1-SNAPSHOT</version>
 
@@ -33,6 +33,7 @@
 		<dependency>
 			<groupId>com.h2database</groupId>
 			<artifactId>h2</artifactId>
+			<version>2.2.224</version>
 			<scope>runtime</scope>
 		</dependency>
 		<dependency>
