@@ -7,7 +7,8 @@ import ru.practicum.shareit.item.model.Item;
 
 import java.time.LocalDateTime;
 
-@Getter @Setter
+@Getter
+@Setter
 @Entity
 @Table(name = "bookings", schema = "public")
 @NoArgsConstructor

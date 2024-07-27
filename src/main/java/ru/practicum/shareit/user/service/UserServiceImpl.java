@@ -1,9 +1,9 @@
 package ru.practicum.shareit.user.service;
 
-import jakarta.transaction.Transactional;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 import ru.practicum.shareit.user.data.UserRepository;
 import ru.practicum.shareit.user.model.User;
 import ru.practicum.shareit.validation.user.ValidationUser;
